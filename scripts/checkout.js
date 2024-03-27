@@ -8,7 +8,7 @@ let cartSummaryHTML = '';
 console.log(cart);
 
 cart.forEach((cartItem) => {
-  const productId = cartItem.id || cartItem.productid;
+  const productId = cartItem.id;
 
   let matchingProduct;
 
@@ -19,7 +19,7 @@ cart.forEach((cartItem) => {
   });
 
   const deliveryOptionId = cartItem.deliveryOptionId;
-
+  
   let deliveryOption;
 
   deliveryOptions.forEach((option) => {
@@ -32,7 +32,7 @@ cart.forEach((cartItem) => {
   const delivDate = today.add(deliveryOption.deliveryDays, 'day');
   const dateString = delivDate.format('dddd, MMMM D');
 
-  
+  console.log(deliveryOption);
 
   cartSummaryHTML += `
     <div class="cart-item-container
@@ -91,6 +91,8 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
     
 
       const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
+      console.log(deliveryOption.id);
+      console.log(cartItem.deliveryOptionId);
 
       html += `
       <div class="delivery-option">
